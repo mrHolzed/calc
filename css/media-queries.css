@@ -1,0 +1,17 @@
+/* Desktop first queries */
+/* Larger than Desktop HD */
+/* Larger than desktop */
+@media (max-width: 767px) {
+  .products {
+    width: 30% !important; }
+  .calculator {
+    width: 70% !important; }
+  .products__wrapper_overlay h2 {
+    font-size: 16px; } }
+
+/* Larger than tablet */
+/* Larger than phablet */
+/* Larger than mobile */
+/* Larger than mobile */
+/* Larger than desktop */
+/* Larger than Desktop HD */
