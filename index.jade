@@ -11,14 +11,16 @@ html(lang="ru")
     link(rel="stylesheet" href="../css/animate.min.css")
     meta(name="viewport", content="width=device-width, initial-scale=1")
   body
-    form(id="mail" onsubmit="submitForm(); return false;")
-      input(type="hidden" name="project_name" value="Site Name")
-      input(type="hidden" name="admin_email" value="solopov.okay@gmail.com")
-      input(type="hidden" name="form_subject" value="Form Subject")
-      input(type="text" name="Name" placeholder="You name..." required)
-      input(type="text" name="E-mail" placeholder="You E-mail..." required)
-      input(type="text" name="Phone" placeholder="You phone...")
-      button Send1
+  form#my_form(onsubmit='submitForm(); return false;')
+    p
+      input#n(placeholder='Name', required='')
+    p
+      input#e(placeholder='Email Address', type='email', required='')
+    textarea#m(placeholder='write your message here', rows='10', required='')
+    p
+      input#mybtn(type='submit', value='Submit Form')
+      span#status
+
     div.calculator__section
       a.calculator__opener.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored Открыть калькулятор
       div.calculator__wrapper
