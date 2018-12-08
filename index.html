@@ -1,1 +1,22 @@
-<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>Const</title><link rel="stylesheet" href="css/main.css"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"><link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet"><link rel="stylesheet" href="../css/mdl-selectfield.min.css"><link rel="stylesheet" href="../css/animate.min.css"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body></body><form id="my_form" onsubmit="submitForm(); return false;"><p><input id="n" placeholder="Name" required=""></p><p><input id="e" placeholder="Email Address" type="email" required=""></p><textarea id="m" placeholder="write your message here" rows="10" required=""></textarea><p><input id="mybtn" type="submit" value="Submit Form"><span id="status"></span></p><div class="calculator__section"><a class="calculator__opener mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Открыть калькулятор</a><div class="calculator__wrapper"><div class="products"></div><div class="calculator"><form><div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"><select id="octane" name="octane" class="mdl-textfield__input"><option></option><option>s</option><option>s</option><option>s</option></select><label for="octane" class="mdl-textfield__label">Выбрать1</label></div></form></div></div></div></form></html><script src="js/jquery.min.js"></script><script src="js/handlebars-v4.0.12.js"></script><script src="js/jquery.justified.min.js"></script><script src="js/material.min.js"></script><script src="js/mdl-selectfield.min.js"></script><script src="js/jquery.animateNumber.min.js"></script><script src="js/main.js"></script>
+<!DOCTYPE html><html lang="ru"><head><meta charset="UTF-8"><title>Const</title><link rel="stylesheet" href="css/main.css"><link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css"><link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet"><link rel="stylesheet" href="../css/mdl-selectfield.min.css"><link rel="stylesheet" href="../css/animate.min.css"><meta name="viewport" content="width=device-width, initial-scale=1"></head><body><form id="my_form" onsubmit="submitForm(); return false;"><p><input id="n" placeholder="Name" required=""></p><p><input id="e" placeholder="Email Address" type="email" required=""></p><textarea id="m" placeholder="write your message here" rows="10" required=""></textarea><p><input id="mybtn" type="submit" value="Submit Form"><span id="status"></span></p></form><div class="calculator__section"><a class="calculator__opener mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Открыть калькулятор</a><div class="calculator__wrapper"><div class="products"></div><div class="calculator"><form><div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label"><select id="octane" name="octane" class="mdl-textfield__input"><option></option><option>s</option><option>s</option><option>s</option></select><label for="octane" class="mdl-textfield__label">Выбрать1</label></div></form></div></div></div></body></html><script src="js/jquery.min.js"></script><script src="js/handlebars-v4.0.12.js"></script><script src="js/jquery.justified.min.js"></script><script src="js/material.min.js"></script><script src="js/mdl-selectfield.min.js"></script><script src="js/jquery.animateNumber.min.js"></script><script src="js/main.js"></script><script>function _(id){ return document.getElementById(id); }
+  function submitForm(){
+    _("mybtn").disabled = true;
+    _("status").innerHTML = 'please wait ...';
+    var formdata = new FormData();
+    formdata.append( "n", _("n").value );
+    formdata.append( "e", _("e").value );
+    formdata.append( "m", _("m").value );
+    var ajax = new XMLHttpRequest();
+    ajax.open( "POST", "example_parser.php" );
+    ajax.onreadystatechange = function() {
+      if(ajax.readyState == 4 && ajax.status == 200) {
+        if(ajax.responseText == "success"){
+          _("my_form").innerHTML = '<h2>Thanks '+_("n").value+', your message has been sent.</h2>';
+        } else {
+          _("status").innerHTML = ajax.responseText;
+          _("mybtn").disabled = false;
+        }
+      }
+    }
+    ajax.send( formdata );
+  }</script>
